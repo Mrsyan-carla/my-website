@@ -1,0 +1,649 @@
+ <!DOCTYPE html>
+ <html lang="zh-CN">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>广西亲子游攻略 V6</title>
+     <style>
+         * { margin: 0; padding: 0; box-sizing: border-box; }
+         body { 
+             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+             line-height: 1.6; 
+             color: #333;
+             background: #f5f5f5;
+         }
+         .container { 
+             max-width: 800px; 
+             margin: 0 auto; 
+             padding: 20px;
+         }
+         .header {
+             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+             color: white;
+             padding: 30px 20px;
+             border-radius: 12px;
+             margin-bottom: 20px;
+             text-align: center;
+         }
+         .header h1 { font-size: 28px; margin-bottom: 10px; }
+         .header .subtitle { font-size: 14px; opacity: 0.9; }
+         .section {
+             background: white;
+             border-radius: 12px;
+             padding: 20px;
+             margin-bottom: 16px;
+             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+         }
+         .section h2 { 
+             color: #667eea; 
+             font-size: 18px; 
+             margin-bottom: 15px;
+             padding-bottom: 10px;
+             border-bottom: 2px solid #f0f0f0;
+         }
+         .section h3 {
+             color: #555;
+             font-size: 16px;
+             margin: 15px 0 10px;
+         }
+         .highlight-box {
+             background: #fff3cd;
+             border-left: 4px solid #ffc107;
+             padding: 15px;
+             margin: 15px 0;
+             border-radius: 0 8px 8px 0;
+         }
+         .hotel-card {
+             background: #f8f9fa;
+             border-radius: 8px;
+             padding: 15px;
+             margin: 10px 0;
+         }
+         .hotel-card h4 { color: #333; margin-bottom: 8px; }
+         .day-card {
+             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+             color: white;
+             padding: 15px;
+             border-radius: 8px;
+             margin: 15px 0;
+         }
+         .day-card h3 { color: white; margin: 0; }
+         .time-section {
+             display: grid;
+             grid-template-columns: repeat(3, 1fr);
+             gap: 10px;
+             margin: 15px 0;
+         }
+         .time-block {
+             background: #f8f9fa;
+             padding: 12px;
+             border-radius: 8px;
+             text-align: center;
+         }
+         .time-block .icon { font-size: 24px; margin-bottom: 5px; }
+         .time-block .label { font-size: 12px; color: #666; }
+         table {
+             width: 100%;
+             border-collapse: collapse;
+             margin: 15px 0;
+             font-size: 14px;
+         }
+         th, td {
+             padding: 10px;
+             text-align: left;
+             border-bottom: 1px solid #eee;
+         }
+         th {
+             background: #f8f9fa;
+             font-weight: 600;
+             color: #555;
+         }
+         .badge {
+             display: inline-block;
+             padding: 3px 10px;
+             border-radius: 12px;
+             font-size: 12px;
+             font-weight: 500;
+         }
+         .badge-green { background: #d4edda; color: #155724; }
+         .badge-yellow { background: #fff3cd; color: #856404; }
+         .badge-red { background: #f8d7da; color: #721c24; }
+         .meal-list {
+             background: #f8f9fa;
+             padding: 15px;
+             border-radius: 8px;
+             margin: 10px 0;
+         }
+         .meal-item {
+             padding: 8px 0;
+             border-bottom: 1px dashed #ddd;
+         }
+         .meal-item:last-child { border-bottom: none; }
+         .tips-box {
+             background: #e7f3ff;
+             border-left: 4px solid #0066cc;
+             padding: 15px;
+             margin: 15px 0;
+             border-radius: 0 8px 8px 0;
+         }
+         .budget-table td:last-child {
+             text-align: right;
+             font-weight: 600;
+         }
+         .checklist {
+             columns: 2;
+             column-gap: 20px;
+         }
+         .checklist-item {
+             break-inside: avoid;
+             padding: 5px 0;
+         }
+         @media (max-width: 600px) {
+             .time-section { grid-template-columns: 1fr; }
+             .checklist { columns: 1; }
+             .header h1 { font-size: 22px; }
+         }
+     </style>
+ </head>
+ <body>
+     <div class="container">
+         <div class="header">
+             <div style="font-size: 40px; margin-bottom: 10px;">🏞</div>
+             <h1>广西亲子游攻略 V6</h1>
+             <p class="subtitle">桂林 + 阳朔 + 龙脊梯田 · 2026年8月8日-15日<br>2位老人(60+) + 2位妈妈 + 2个8岁男孩</p>
+         </div>
+
+         <div class="section">
+             <h2>📋 行前关键信息</h2>
+             
+             <h3>抵达机场 · 建议航班</h3>
+             <p><strong>桂林两江国际机场（KWL）</strong> - 桂林只有一个民航机场，距市区酒店28km/约40分钟车程</p>
+             <p>返程也是从同一个机场（KWL）出发——阳朔过去约90km/1.5h</p>
+             <p><strong>建议航班：</strong>8月8日（周六）下午出发，19:00前抵达桂林。太晚到老人孩子都累。</p>
+             <p>国内主要城市直飞桂林的航司：南航、国航、东航、海航。</p>
+         </div>
+
+         <div class="section">
+             <h2>🏨 住宿安排</h2>
+             
+             <div class="hotel-card">
+                 <h4>📍 D1-D3 桂林酒店 · 漓江大瀑布饭店</h4>
+                 <p>📅 入住：8月8日 → 退房：8月12日（4晚）</p>
+                 <p>📍 两江四湖正中心，正对日月双塔</p>
+                 <p>💰 ¥450-650/晚 × 4晚 × 2间 ≈ ¥3600-5200</p>
+                 <p>🅿 有停车场（租车方案用）</p>
+             </div>
+             
+             <div class="hotel-card">
+                 <h4>📍 D4-D6 阳朔酒店 · MeTown蜜棠度假酒店</h4>
+                 <p>📅 入住：8月12日 → 退房：8月15日（3晚）</p>
+                 <p>📍 十里画廊内，遇龙河畔</p>
+                 <p>💰 家庭套房（两室一厅）¥700/晚 × 3晚 ≈ ¥2100</p>
+                 <p>🅿 有停车场 | 🦙 羊驼+孔雀+儿童乐园</p>
+             </div>
+         </div>
+
+         <div class="section">
+             <h2>🚗 租车信息</h2>
+             <p><strong>7座GL8/大通G20</strong></p>
+             <p>📅 取车：8月8日 桂林机场 → 还车：8月15日 桂林机场</p>
+             <p>💰 约 ¥450/天 × 7 ≈ ¥3150 + 油费高速 ≈ ¥3650</p>
+             <p>🅿 携程/神州租车APP提前预订</p>
+         </div>
+
+         <div class="highlight-box">
+             <h3 style="color: #856404; margin-bottom: 10px;">⚠️ 必提前订</h3>
+             <ol style="margin-left: 20px;">
+                 <li>8月8日航班（越早订越便宜）</li>
+                 <li>漓江大瀑布饭店（暑假紧张，现在订）</li>
+                 <li>蜜棠家庭套房（极度抢手，现在订）</li>
+                 <li>如方案A：携程/神州租车预订7座车</li>
+                 <li>龙脊梯田门票（携程可订）</li>
+                 <li>Day5前晚8点微信抢遇龙河竹筏票</li>
+             </ol>
+         </div>
+
+         <div class="section">
+             <h2>📊 行程总览</h2>
+             <table>
+                 <tr>
+                     <th>行程日期</th>
+                     <th>总行程</th>
+                     <th>人数</th>
+                     <th>换酒店</th>
+                     <th>预算（6人）</th>
+                 </tr>
+                 <tr>
+                     <td>8/8-8/15</td>
+                     <td>7天6晚</td>
+                     <td>2老+2妈+2孩</td>
+                     <td>2次</td>
+                     <td>¥13k-17k</td>
+                 </tr>
+             </table>
+         </div>
+
+         <div class="section">
+             <h2>🚗 交通方案对比（二选一）</h2>
+             <p style="margin-bottom: 15px;">6人坐不下1辆滴滴（限4人），叫2辆车又贵又不方便。给两个方案，自己选。</p>
+             
+             <h3>🟢 方案A：全程租7座车（8/8-8/15）- 推荐</h3>
+             <p><strong>¥3650（每家 ¥1825）</strong></p>
+             <p>总驾驶 ≈537km · 油费+高速 ≈¥500</p>
+             <table>
+                 <tr><th>日期</th><th>行程</th><th>驾驶km</th></tr>
+                 <tr><td>8/8</td><td>机场→酒店 KWL→两江四湖</td><td>28</td></tr>
+                 <tr><td>8/9</td><td>Day1象鼻山 酒店↔象鼻山</td><td>4</td></tr>
+                 <tr><td>8/10</td><td>Day2王府+七星 酒店→王府→七星→东西巷</td><td>9</td></tr>
+                 <tr><td>8/11</td><td>Day3龙脊+芦笛岩 桂林⇄龙脊+芦笛岩</td><td>172</td></tr>
+                 <tr><td>8/12</td><td>Day4桂林→阳朔 →相公山→兴坪→阳朔</td><td>115</td></tr>
+                 <tr><td>8/13</td><td>Day5遇龙河+如意峰 ↔水厄底+画廊+如意峰</td><td>53</td></tr>
+                 <tr><td>8/14</td><td>Day6世外桃源+银子岩 →世外桃源→银子岩→回</td><td>81</td></tr>
+                 <tr><td>8/15</td><td>返程 阳朔→KWL机场还车</td><td>90</td></tr>
+             </table>
+             <p style="color: #28a745;"><strong>✅ 全天候有车，老人不用等，行李全程后备箱</strong></p>
+             <p style="color: #dc3545;">⚠️ GL8后备箱装不下6人行李，需每人限1登机箱+1软包</p>
+             
+             <h3>🔵 方案B：仅租8/11+8/12两天</h3>
+             <p><strong>¥2090（每家 ¥1045）</strong></p>
+             <p>租车2天272km · 其余天打车</p>
+             <table>
+                 <tr><th>日期</th><th>方式</th><th>明细</th><th>¥</th></tr>
+                 <tr><td>8/8</td><td>打车×2</td><td>KWL→酒店 28km</td><td>200</td></tr>
+                 <tr><td>8/9</td><td>打车×2</td><td>↔象鼻山</td><td>100</td></tr>
+                 <tr><td>8/10</td><td>打车×2</td><td>3程各2辆</td><td>150</td></tr>
+                 <tr><td>8/11</td><td colspan="3">🚗租车 桂林⇄龙脊+芦笛岩 172km</td></tr>
+                 <tr><td>8/12</td><td colspan="3">🚗租车 →相公山→兴坪→阳朔 115km</td></tr>
+                 <tr><td>8/13</td><td>打车×2</td><td>多程</td><td>200</td></tr>
+                 <tr><td>8/14</td><td>打车×2</td><td>多程</td><td>280</td></tr>
+                 <tr><td>8/15</td><td>打车×2</td><td>阳朔→KWL 90km</td><td>360</td></tr>
+             </table>
+             <p style="color: #28a745;"><strong>✅ 省钱 ¥1560（每家省 ¥780）</strong></p>
+             <p style="color: #dc3545;">⚠️ 阳朔散点景区需多次叫2辆车，老人路边等车</p>
+             
+             <div class="tips-box">
+                 <strong>💡 建议方案A</strong><br>
+                 差价每家780元，日均110元——换来老人全程有人接、行李不搬、随时停车。方案B在阳朔叫车会非常折腾。
+             </div>
+         </div>
+
+         <div class="section">
+             <h2>🏨 住宿地总览</h2>
+             <table>
+                 <tr><th>日期</th><th>酒店</th><th>区域</th><th>推荐理由</th></tr>
+                 <tr>
+                     <td>8/8入住→8/12退房（4晚）</td>
+                     <td>漓江大瀑布饭店</td>
+                     <td>两江四湖正中心</td>
+                     <td>8号抵达即入住，行程3天集中在此。老人下楼就能逛步行街</td>
+                 </tr>
+                 <tr>
+                     <td>8/12入住→8/15退房（3晚）</td>
+                     <td>MeTown蜜棠度假酒店</td>
+                     <td>十里画廊·遇龙河畔</td>
+                     <td>8/12换酒店（开车1.5h）。家庭套房两室一厅，羊驼孔雀+儿童乐园</td>
+                 </tr>
+             </table>
+         </div>
+
+         <div class="section">
+             <h2>📅 每日详细行程</h2>
+ 
+             <div class="day-card">
+                 <h3>Day 1 · 抵达，象鼻山+两江四湖</h3>
+                 <p>📅 8月9日 周日 | 🏨 住：桂林漓江大瀑布饭店</p>
+             </div>
+             <p><strong>🚗 交通：</strong>方案A：8/8机场已取车，酒店出发开车5分钟。方案B：叫2辆滴滴往返 ¥100。</p>
+             <p><strong>⏱ 游玩：</strong>全天户外约2-3h，节奏轻松，老人适应性日。</p>
+             
+             <div class="time-section">
+                 <div class="time-block">
+                     <div class="icon">🌅</div>
+                     <div class="label"><strong>上午</strong><br>睡饱+午餐</div>
+                     <p style="font-size: 12px; margin-top: 5px;">前一天晚上到，今天不用赶。酒店早餐后附近午餐。</p>
+                 </div>
+                 <div class="time-block">
+                     <div class="icon">☀</div>
+                     <div class="label"><strong>中午</strong><br>象鼻山 15:00-16:15</div>
+                     <p style="font-size: 12px; margin-top: 5px;">3号门入2号门出，全程平地1h。老人走不动可在江边坐着等。</p>
+                 </div>
+                 <div class="time-block">
+                     <div class="icon">🌇</div>
+                     <div class="label"><strong>下午</strong><br>两江四湖+晚餐 16:30起</div>
+                     <p style="font-size: 12px; margin-top: 5px;">步道散步→18:00步行街晚餐。饭后日月双塔夜景。</p>
+                 </div>
+             </div>
+             
+             <div class="meal-list">
+                 <div class="meal-item"><strong>🍽 午餐：</strong>崇善米粉（依仁路店）或阿甘酒家</div>
+                 <div class="meal-item"><strong>🍽 晚餐：</strong>椿记烧鹅（中山中路店），人均 ¥60-80</div>
+             </div>
+             
+             <div class="tips-box">
+                 <strong>⚠️ 关键提示：</strong>第一天不赶。昨晚刚到让大家缓一缓。米粉店下午2点关门，别当晚饭吃。
+             </div>
+
+             <div class="day-card">
+                 <h3>Day 2 · 靖江王府+七星景区</h3>
+                 <p>📅 8月10日 周一 | 🏨 住：桂林漓江大瀑布饭店</p>
+             </div>
+             <p><strong>🚗 交通：</strong>方案A：开车3程共9km。方案B：3程各叫2辆滴滴 ¥150。</p>
+             <p><strong>⏱ 游玩：</strong>王府约2h（老人友好平地），七星景区约3h，全天约5h。</p>
+             
+             <div class="time-section">
+                 <div class="time-block">
+                     <div class="icon">🌅</div>
+                     <div class="label"><strong>上午</strong><br>靖江王府 9:00-11:00</div>
+                     <p style="font-size: 12px; margin-top: 5px;">明代王府，"桂林山水甲天下"出处。独秀峰306级台阶——老人山脚休息，妈妈带孩子爬山看全景。</p>
+                 </div>
+                 <div class="time-block">
+                     <div class="icon">☀</div>
+                     <div class="label"><strong>中午</strong><br>七星景区 12:00-16:00</div>
+                     <p style="font-size: 12px; margin-top: 5px;">动物园（熊猫馆+猴山）→七星岩溶洞→骆驼山。平地为主，老人可在骆驼山下茶馆休息。</p>
+                 </div>
+                 <div class="time-block">
+                     <div class="icon">🌇</div>
+                     <div class="label"><strong>下午</strong><br>东西巷晚餐 17:00起</div>
+                     <p style="font-size: 12px; margin-top: 5px;">小吃摊糖油粑粑、桂花糕。老人慢慢逛。</p>
+                 </div>
+             </div>
+             
+             <div class="meal-list">
+                 <div class="meal-item"><strong>🍽 午餐：</strong>同来米粉或小南国（文明路店），人均 ¥50-70</div>
+                 <div class="meal-item"><strong>🍽 晚餐：</strong>阿甘酒家（东西巷店）或勾味王</div>
+             </div>
+             
+             <div class="tips-box">
+                 <strong>⚠️ 关键提示：</strong>景点对老人友好（平地为主）。独秀峰爬山可选不强求。
+             </div>
+
+             <div class="day-card">
+                 <h3>Day 3 · 龙脊梯田+芦笛岩（最远）</h3>
+                 <p>📅 8月11日 周二 | 🏨 住：桂林漓江大瀑布饭店</p>
+             </div>
+             <p><strong>🚗 交通：</strong>桂林⇄龙脊 160km（2h×2）+ 芦笛岩 12km。全天开车172km。龙脊内缆车上下（¥100往返）。</p>
+             <p><strong>⏱ 游玩：</strong>龙脊约3h，芦笛岩约1.5h。全天游玩4.5h，车程3.5h。</p>
+             
+             <div class="time-section">
+                 <div class="time-block">
+                     <div class="icon">🌅</div>
+                     <div class="label"><strong>上午</strong><br>龙脊梯田 7:00-12:30</div>
+                     <p style="font-size: 12px; margin-top: 5px;">7:00出发，9:00到金坑大寨。缆车上下，山顶看7月灌水镜面梯田。山脚午餐。</p>
+                 </div>
+                 <div class="time-block">
+                     <div class="icon">☀</div>
+                     <div class="label"><strong>中午</strong><br>返回+午餐 12:30-14:00</div>
+                     <p style="font-size: 12px; margin-top: 5px;">龙脊山脚竹筒饭+土鸡。开车回桂林2h，老人孩子车上休息。</p>
+                 </div>
+                 <div class="time-block">
+                     <div class="icon">🌇</div>
+                     <div class="label"><strong>下午</strong><br>芦笛岩 16:00-17:30</div>
+                     <p style="font-size: 12px; margin-top: 5px;">国宾级溶洞恒温20°C全程平路。老人走溶洞完全没问题。18:00晚餐。</p>
+                 </div>
+             </div>
+             
+             <div class="meal-list">
+                 <div class="meal-item"><strong>🍽 午餐：</strong>龙脊山脚农家：竹筒饭 ¥20-30、土鸡汤、野菜。人均 ¥40-50</div>
+                 <div class="meal-item"><strong>🍽 晚餐：</strong>清淡为主——小南国或米粉（老人坐一天车不宜油腻）</div>
+             </div>
+             
+             <div class="tips-box">
+                 <strong>⚠️ 关键提示：</strong>全行程最累的一天。出发前备零食+动画片给孩子消磨时间。老人坐第二排。龙脊门票 ¥80，缆车¥100/人。
+             </div>
+
+             <div class="day-card">
+                 <h3>Day 4 · 桂林→阳朔，相公山+兴坪+20元背景</h3>
+                 <p>📅 8月12日 周三 | 🔄 退房漓江大瀑布 → 住：阳朔蜜棠</p>
+             </div>
+             <p><strong>🚗 交通：</strong>桂林酒店退房→相公山 50km（1h）→兴坪 30km（40min）→阳朔蜜棠 35km（40min）。全天115km。</p>
+             <p><strong>⏱ 游玩：</strong>相公山1h，兴坪古镇+20元背景3h，全天约5h。</p>
+             
+             <div class="time-section">
+                 <div class="time-block">
+                     <div class="icon">🌅</div>
+                     <div class="label"><strong>上午</strong><br>相公山 9:00-11:00</div>
+                     <p style="font-size: 12px; margin-top: 5px;">退房后出发1h到相公山。15分钟台阶登顶看漓江全景——老人也能上。约1h。</p>
+                 </div>
+                 <div class="time-block">
+                     <div class="icon">☀</div>
+                     <div class="label"><strong>中午</strong><br>兴坪古镇+20元背景 11:30-14:30</div>
+                     <p style="font-size: 12px; margin-top: 5px;">逛兴坪老街→步行到江边观景台，让孩子举20块钱对比实景拍照。老街午餐。</p>
+                 </div>
+                 <div class="time-block">
+                     <div class="icon">🌇</div>
+                     <div class="label"><strong>下午</strong><br>阳朔蜜棠入住 15:30起</div>
+                     <p style="font-size: 12px; margin-top: 5px;">开车40分钟到蜜棠。下午泳池/喂羊驼/下午茶。老人坐院子看山水。18:00开车去西街晚餐（5km/10分钟）。</p>
+                 </div>
+             </div>
+             
+             <div class="meal-list">
+                 <div class="meal-item"><strong>🍽 午餐：</strong>兴坪老街餐馆：啤酒鱼或农家菜，人均 ¥50-70</div>
+                 <div class="meal-item"><strong>🍽 晚餐：</strong>大师傅啤酒鱼（西街总店）或谢三姐啤酒鱼。人均 ¥80-100</div>
+             </div>
+             
+             <div class="tips-box">
+                 <strong>⚠️ 关键提示：</strong>相公山是顺路加的一站——桂林到阳朔必经之路。桂林酒店退房时确认没有遗漏物品（之后不再回桂林）。
+             </div>
+
+             <div class="day-card">
+                 <h3>Day 5 · 遇龙河竹筏+十里画廊+如意峰</h3>
+                 <p>📅 8月13日 周四 | 🏨 住：阳朔蜜棠</p>
+             </div>
+             <p><strong>🚗 交通：</strong>方案A：开车4程约53km。方案B：多程打车约¥200。</p>
+             <p><strong>⏱ 游玩：</strong>竹筏1h，十里画廊2h，如意峰2h（缆车上下），全天5-6h。</p>
+             
+             <div class="time-section">
+                 <div class="time-block">
+                     <div class="icon">🌅</div>
+                     <div class="label"><strong>上午</strong><br>遇龙河竹筏 8:30-10:00</div>
+                     <p style="font-size: 12px; margin-top: 5px;">水厄底-工农桥段40分钟 ¥160/筏。老人可不坐——开车送到工农桥等。</p>
+                 </div>
+                 <div class="time-block">
+                     <div class="icon">☀</div>
+                     <div class="label"><strong>中午</strong><br>十里画廊+农家饭 10:00-13:30</div>
+                     <p style="font-size: 12px; margin-top: 5px;">开车慢行十里画廊。沿线停靠月亮山、大榕树、蝴蝶泉（1h）、图腾古道（40min）。</p>
+                 </div>
+                 <div class="time-block">
+                     <div class="icon">🌇</div>
+                     <div class="label"><strong>下午</strong><br>如意峰 14:00-17:00</div>
+                     <p style="font-size: 12px; margin-top: 5px;">缆车上下，山顶步道+玻璃栈道。老人坐缆车看全景。晚上可选印象刘三姐（20:00-21:00）。</p>
+                 </div>
+             </div>
+             
+             <div class="meal-list">
+                 <div class="meal-item"><strong>🍽 午餐：</strong>遇龙河农家菜馆：土鸡、竹筒饭、野菜。人均 ¥40-60</div>
+                 <div class="meal-item"><strong>🍽 晚餐：</strong>小南国（阳朔店）或月圆山庄。西街麦当劳作孩子保底</div>
+             </div>
+             
+             <div class="tips-box">
+                 <strong>⚠️ 关键提示：</strong>今晚8点微信抢竹筏票！蝴蝶泉和图腾古道都在十里画廊路边顺停。印象刘三姐可选（¥198起/人）。
+             </div>
+
+             <div class="day-card">
+                 <h3>Day 6 · 世外桃源+银子岩</h3>
+                 <p>📅 8月14日 周五 | 🏨 住：阳朔蜜棠</p>
+             </div>
+             <p><strong>🚗 交通：</strong>方案A：开车81km。方案B：多程打车约¥280。</p>
+             <p><strong>⏱ 游玩：</strong>世外桃源2.5h（坐船穿溶洞），银子岩1.5h，全天4-5h。</p>
+             
+             <div class="time-section">
+                 <div class="time-block">
+                     <div class="icon">🌅</div>
+                     <div class="label"><strong>上午</strong><br>世外桃源 8:45-11:30</div>
+                     <p style="font-size: 12px; margin-top: 5px;">坐船穿溶洞入湖，湖区+仿古村落+稻田。全程坐船+平地。2.5h。雨天备选：金水岩。</p>
+                 </div>
+                 <div class="time-block">
+                     <div class="icon">☀</div>
+                     <div class="label"><strong>中午</strong><br>午餐+前往银子岩 11:30-14:00</div>
+                     <p style="font-size: 12px; margin-top: 5px;">出口附近午餐，开车50分钟到银子岩。</p>
+                 </div>
+                 <div class="time-block">
+                     <div class="icon">🌇</div>
+                     <div class="label"><strong>下午</strong><br>银子岩+收官晚餐 14:00-18:00</div>
+                     <p style="font-size: 12px; margin-top: 5px;">洞内1.5h（台阶比芦笛岩多，老人量力而行）。回蜜棠，收官晚餐。</p>
+                 </div>
+             </div>
+             
+             <div class="meal-list">
+                 <div class="meal-item"><strong>🍽 午餐：</strong>世外桃源出口附近餐馆，或自带干粮</div>
+                 <div class="meal-item"><strong>🍽 晚餐：</strong>收官：月圆山庄（田园农家菜），芒果帮给孩子收官甜点</div>
+             </div>
+             
+             <div class="tips-box">
+                 <strong>⚠️ 关键提示：</strong>银子岩台阶比芦笛岩多，老人腿脚不便可在洞口咖啡馆等。雨天备选金水岩（泥巴浴+温泉+溶洞）。
+             </div>
+
+             <div class="day-card">
+                 <h3>Day 7 · 返程</h3>
+                 <p>📅 8月15日 周六 | 🏠 回家</p>
+             </div>
+             <p><strong>🚗 交通：</strong>方案A：蜜棠退房→开车到桂林两江机场 90km/1.5h，机场还车。方案B：叫2辆滴滴 ¥360。</p>
+             <p><strong>⏱ 游玩：</strong>无景点。上午漓江边散步/蜜棠泳池，中午出发。</p>
+             
+             <div class="time-section">
+                 <div class="time-block">
+                     <div class="icon">🌅</div>
+                     <div class="label"><strong>上午</strong><br>最后的漓江晨光</div>
+                     <p style="font-size: 12px; margin-top: 5px;">退房前在漓江边步道散步或蜜棠泳池最后泡一次。西街买桂花糕带路上。</p>
+                 </div>
+                 <div class="time-block">
+                     <div class="icon">☀</div>
+                     <div class="label"><strong>中午</strong><br>出发去机场</div>
+                     <p style="font-size: 12px; margin-top: 5px;">建议订14:00以后航班。方案A：加满油，机场还车预留20分钟。</p>
+                 </div>
+                 <div class="time-block">
+                     <div class="icon">🌇</div>
+                     <div class="label"><strong>下午</strong><br>到家</div>
+                     <p style="font-size: 12px; margin-top: 5px;">预计下午到家，旅程收官！</p>
+                 </div>
+             </div>
+             
+             <div class="meal-list">
+                 <div class="meal-item"><strong>🍽 午餐：</strong>路上吃或机场解决</div>
+                 <div class="meal-item"><strong>🍽 晚餐：</strong>无</div>
+             </div>
+             
+             <div class="tips-box">
+                 <strong>⚠️ 关键提示：</strong>方案A满油还车。蜜棠退房检查孩子的小羊驼礼物有没有拿。建议订14:00后航班。
+             </div>
+         </div>
+
+         <div class="section">
+             <h2>🎯 可选加换景点（灵活调整行程用）</h2>
+             <p style="margin-bottom: 15px;">以下景点未纳入7天核心行程，但可在旅途中根据天气、体力随时替换或叠加。</p>
+             <table>
+                 <tr><th>景点</th><th>位置</th><th>时长</th><th>老人？</th><th>建议插入</th><th>时段</th></tr>
+                 <tr><td>古东瀑布</td><td>桂林东25km</td><td>3-4h</td><td>⚠️只能看不能爬</td><td>替换8/10王府</td><td>上午</td></tr>
+                 <tr><td colspan="6" style="font-size: 12px; color: #666;">中国唯一可爬的瀑布——穿草鞋戴头盔拉铁链踩水往上爬。8岁男孩爱疯。老人山下步道看。桂林东和大圩古镇/尧山同一条路。</td></tr>
+                 <tr><td>大圩古镇</td><td>桂林东18km</td><td>1-1.5h</td><td>✅</td><td>串联8/10或8/11</td><td>中午</td></tr>
+                 <tr><td colspan="6" style="font-size: 12px; color: #666;">广西四大古镇之一，未商业化——青石板路+明清老宅+漓江渡口。去古东/尧山的路上顺停1h。</td></tr>
+                 <tr><td>尧山</td><td>桂林东10km</td><td>2h</td><td>✅缆车</td><td>加在8/9下午</td><td>下午</td></tr>
+                 <tr><td colspan="6" style="font-size: 12px; color: #666;">桂林最高峰，缆车上下看全景。8/9象鼻山后时间还早可去。</td></tr>
+                 <tr><td>蝴蝶泉</td><td>十里画廊</td><td>1h</td><td>✅</td><td>8/13中午</td><td>中午</td></tr>
+                 <tr><td colspan="6" style="font-size: 12px; color: #666;">公路边溶洞+侗族歌舞，路过顺停。</td></tr>
+                 <tr><td>图腾古道</td><td>十里画廊</td><td>40min</td><td>✅</td><td>8/13中午</td><td>中午</td></tr>
+                 <tr><td colspan="6" style="font-size: 12px; color: #666;">原始部落主题，和蝴蝶泉挨着。</td></tr>
+                 <tr><td>印象刘三姐</td><td>阳朔漓江边</td><td>1h晚上</td><td>✅</td><td>8/12-14任一晚</td><td>20:00</td></tr>
+                 <tr><td colspan="6" style="font-size: 12px; color: #666;">张艺谋·600人山水实景演出。老人会喜欢。</td></tr>
+                 <tr><td>金水岩</td><td>阳朔高田</td><td>1.5h</td><td>⚠️部分爬</td><td>8/14雨天备选</td><td>任意</td></tr>
+                 <tr><td colspan="6" style="font-size: 12px; color: #666;">泥巴浴+温泉+溶洞。离阳朔5km，雨天不受影响。</td></tr>
+             </table>
+         </div>
+
+         <div class="section">
+             <h2>🏨 酒店推荐 · 红绿灯分析</h2>
+             
+             <h3>漓江大瀑布饭店 ⭐首推·8/8-8/12</h3>
+             <p>📍 两江四湖正中心 💰 ¥450-650/晚 ⭐ 五星级老牌</p>
+             <p>桂林地标，晚上瀑布灯光秀。室内泳池+儿童池，有停车场。步行街3分钟。</p>
+             <table>
+                 <tr><th style="color: #28a745;">+ 优势</th><th style="color: #ffc107;">注意</th><th style="color: #dc3545;">劣势</th></tr>
+                 <tr><td>位置最佳</td><td>旺季需提前订</td><td>非专门亲子酒店</td></tr>
+                 <tr><td>有停车场</td><td>部分房型偏老</td><td>暑假涨价</td></tr>
+                 <tr><td>泳池+儿童池</td><td></td><td></td></tr>
+             </table>
+             
+             <h3>MeTown蜜棠度假酒店 ⭐强烈推荐·8/12-8/15</h3>
+             <p>📍 十里画廊·遇龙河畔 💰 家庭套房 ¥700/晚</p>
+             <p>亲子口碑最好。家庭套房两室一厅。羊驼孔雀投喂、儿童乐园、无边泳池、免费旅拍、下午茶。有停车场。</p>
+             <table>
+                 <tr><th style="color: #28a745;">+ 优势</th><th style="color: #ffc107;">注意</th><th style="color: #dc3545;">劣势</th></tr>
+                 <tr><td>亲子设施最全</td><td>路窄需接驳</td><td>暑假极度抢手</td></tr>
+                 <tr><td>家庭套房</td><td>距西街5km（有车无所谓）</td><td>周边餐饮少</td></tr>
+                 <tr><td>免费旅拍+下午茶</td><td></td><td></td></tr>
+             </table>
+         </div>
+
+         <div class="section">
+             <h2>🍽 吃饭总结</h2>
+             <table>
+                 <tr><th>餐次</th><th>日期</th><th>地点</th><th>推荐</th></tr>
+                 <tr><td>D1午餐</td><td>8/9</td><td>桂林</td><td>崇善米粉 / 阿甘酒家</td></tr>
+                 <tr><td>D1晚餐</td><td>8/9</td><td>桂林</td><td>椿记烧鹅</td></tr>
+                 <tr><td>D2午餐</td><td>8/10</td><td>桂林</td><td>同来米粉 / 小南国</td></tr>
+                 <tr><td>D2晚餐</td><td>8/10</td><td>桂林</td><td>阿甘酒家 / 勾味王</td></tr>
+                 <tr><td>D3午餐</td><td>8/11</td><td>龙脊</td><td>竹筒饭+土鸡</td></tr>
+                 <tr><td>D3晚餐</td><td>8/11</td><td>桂林</td><td>小南国</td></tr>
+                 <tr><td>D4午餐</td><td>8/12</td><td>兴坪</td><td>老街啤酒鱼</td></tr>
+                 <tr><td>D4晚餐</td><td>8/12</td><td>阳朔</td><td>大师傅/谢三姐啤酒鱼</td></tr>
+                 <tr><td>D5午餐</td><td>8/13</td><td>遇龙河</td><td>农家菜馆</td></tr>
+                 <tr><td>D5晚餐</td><td>8/13</td><td>阳朔</td><td>小南国 / 月圆山庄</td></tr>
+                 <tr><td>D6午餐</td><td>8/14</td><td>世外桃源</td><td>小吃摊/餐馆</td></tr>
+                 <tr><td>D6晚餐</td><td>8/14</td><td>阳朔</td><td>月圆山庄（收官）</td></tr>
+                 <tr><td>D7午餐</td><td>8/15</td><td>路上</td><td>机场/服务区</td></tr>
+             </table>
+             
+             <h3>广西特色饮食</h3>
+             <table>
+                 <tr><th>菜品</th><th>特点</th><th>孩子</th><th>老人</th></tr>
+                 <tr><td>桂林米粉</td><td>卤水+锅烧 ¥8-15</td><td>⭐⭐⭐</td><td>⭐⭐⭐</td></tr>
+                 <tr><td>荔浦芋头扣肉</td><td>粉糯芋头+五花肉</td><td>⭐⭐⭐</td><td>⭐⭐⭐</td></tr>
+                 <tr><td>啤酒鱼</td><td>毛骨鱼+啤酒焖煮 ¥80-100</td><td>⭐⭐⭐</td><td>⭐⭐⭐</td></tr>
+                 <tr><td>竹筒饭</td><td>糯米+腊肉竹筒烤 ¥20-30</td><td>⭐⭐⭐</td><td>⭐⭐⭐</td></tr>
+                 <tr><td>田螺酿</td><td>漓江特色</td><td>⭐⭐</td><td>⭐⭐</td></tr>
+                 <tr><td>芒果帮甜品</td><td>芒果沙冰消暑</td><td>⭐⭐⭐</td><td>⭐⭐</td></tr>
+             </table>
+         </div>
+
+         <div class="section">
+             <h2>💰 预算参考（6人）</h2>
+             <table class="budget-table">
+                 <tr><th>项目</th><th>方案A（全程租车）</th><th>方案B（租2天）</th></tr>
+                 <tr><td>交通</td><td>¥3650</td><td>¥2090</td></tr>
+                 <tr><td>住宿</td><td>¥5100-7000</td><td>¥5100-7000</td></tr>
+                 <tr><td>门票</td><td>约 ¥3900</td><td>约 ¥3900</td></tr>
+                 <tr><td>餐饮</td><td>约 ¥3000</td><td>约 ¥3000</td></tr>
+                 <tr style="font-weight: bold; background: #f8f9fa;"><td>合计</td><td>¥13700-17500</td><td>¥12000-16000</td></tr>
+                 <tr style="font-weight: bold; color: #667eea;"><td>每家</td><td>¥6850-8750</td><td>¥6000-8000</td></tr>
+             </table>
+         </div>
+
+         <div class="section">
+             <h2>⚠️ 老人出行特别提示</h2>
+             <table>
+                 <tr><th>注意</th><th>说明</th></tr>
+                 <tr><td>座位</td><td>GL8第二排航空座椅给老人</td></tr>
+                 <tr><td>药品</td><td>常用药+晕车药+藿香正气水</td></tr>
+                 <tr><td>节奏</td><td>每天9点后出发，走不动就坐</td></tr>
+                 <tr><td>午餐</td><td>每天12:00前后必须安排</td></tr>
+                 <tr><td>厕所</td><td>龙脊车程2h，中途服务区停</td></tr>
+                 <tr><td>景点</td><td>溶洞最友好，竹筏可不坐，如意峰有缆车</td></tr>
+             </table>
+         </div>
+
+         <div class="section">
+             <h2>🎒 行李清单（6人版）</h2>
+             <table>
+                 <tr><th>类别</th><th>物品</th></tr>
+                 <tr><td>证件</td><td>身份证+老人老年卡（景点优惠）</td></tr>
+                 <tr><td>衣物</td><td>夏装×5套+薄外套（溶洞20°C）</td></tr>
+                 <tr><td>防晒</td><td>防晒霜+遮阳帽（龙脊无遮阳）</td></tr>
+                 <tr><td>防蚊</td><td>驱蚊液/驱蚊贴</td></tr>
+                 <tr><td>药品</td><td>常用药+晕车药+藿香正气水+创可贴+蒙脱石散</td></tr>
+                 <tr><td>车上</td><td>零食+水果+水+iPad+颈枕</td></tr>
+                 <tr><td>雨具</td><td>轻便雨衣×6</td></tr>
+             </table>
+         </div>
+     </div>
+ </body>
+ </html>

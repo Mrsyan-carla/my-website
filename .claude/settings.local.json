@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git -c user.email=\"you@example.com\" -c user.name=\"Your Name\" commit -m \"第一个网站:Hello World 页面\")"
+    ]
+  }
+}
