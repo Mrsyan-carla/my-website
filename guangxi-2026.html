@@ -1,0 +1,529 @@
+ <!DOCTYPE html>
+ <html lang="zh-CN">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+     <title>广西亲子游攻略 🌈</title>
+     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+     <style>
+         :root {
+             --primary: #FF6B6B;
+             --secondary: #4ECDC4;
+             --accent: #FFE66D;
+             --dark: #2C3E50;
+             --light: #F7F9FC;
+             --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+             --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+             --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+             --shadow: 0 4px 20px rgba(0,0,0,0.1);
+             --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+         }
+         * { margin: 0; padding: 0; box-sizing: border-box; }
+         body {
+             font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+             background: var(--light);
+             color: var(--dark);
+             line-height: 1.6;
+             overflow-x: hidden;
+         }
+         .header {
+             background: var(--gradient-1);
+             padding: 40px 20px 60px;
+             text-align: center;
+             color: white;
+             position: relative;
+             border-radius: 0 0 30px 30px;
+             box-shadow: var(--shadow);
+         }
+         .header-icon { font-size: 60px; margin-bottom: 10px; animation: bounce 2s infinite; }
+         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+         .header h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+         .header-tag {
+             display: inline-block;
+             background: rgba(255,255,255,0.3);
+             padding: 6px 16px;
+             border-radius: 20px;
+             font-size: 13px;
+             margin: 4px;
+             backdrop-filter: blur(10px);
+         }
+         .container { padding: 30px 16px 100px; max-width: 480px; margin: 0 auto; }
+         .quick-info { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 24px; }
+         .info-card {
+             background: white;
+             padding: 16px;
+             border-radius: 16px;
+             box-shadow: var(--shadow);
+             text-align: center;
+         }
+         .info-card .icon { font-size: 28px; margin-bottom: 8px; }
+         .info-card .label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+         .info-card .value { font-size: 16px; font-weight: 700; color: var(--dark); margin-top: 4px; }
+         .section-title { font-size: 20px; font-weight: 700; margin: 30px 0 16px; display: flex; align-items: center; gap: 10px; }
+         .section-title .emoji { font-size: 24px; }
+         .alert-box {
+             background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+             border-radius: 20px;
+             padding: 20px;
+             margin-bottom: 20px;
+             box-shadow: var(--shadow);
+         }
+         .alert-box h3 { font-size: 16px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+         .alert-list { list-style: none; }
+         .alert-list li { padding: 8px 0; border-bottom: 1px dashed rgba(0,0,0,0.1); display: flex; align-items: flex-start; gap: 10px; font-size: 14px; }
+         .alert-list li:last-child { border-bottom: none; }
+         .alert-list .num { background: var(--primary); color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+         .day-card { background: white; border-radius: 20px; margin-bottom: 16px; box-shadow: var(--shadow); overflow: hidden; transition: all 0.3s ease; }
+         .day-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+         .day-header { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--gradient-1); color: white; position: relative; }
+         .day-card:nth-child(2) .day-header { background: var(--gradient-2); }
+         .day-card:nth-child(3) .day-header { background: var(--gradient-3); }
+         .day-card:nth-child(4) .day-header { background: var(--gradient-1); }
+         .day-card:nth-child(5) .day-header { background: var(--gradient-2); }
+         .day-card:nth-child(6) .day-header { background: var(--gradient-3); }
+         .day-card:nth-child(7) .day-header { background: var(--gradient-1); }
+         .day-card:nth-child(8) .day-header { background: var(--gradient-2); }
+         .day-title { flex: 1; }
+         .day-title h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+         .day-title p { font-size: 13px; opacity: 0.9; }
+         .day-toggle { font-size: 24px; transition: transform 0.3s ease; }
+         .day-card.active .day-toggle { transform: rotate(180deg); }
+         .day-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+         .day-card.active .day-content { max-height: 2000px; }
+         .day-body { padding: 20px; }
+         .timeline { position: relative; padding-left: 30px; }
+         .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--primary), var(--secondary)); }
+         .timeline-item { position: relative; margin-bottom: 20px; padding: 16px; background: #f8f9fa; border-radius: 12px; }
+         .timeline-item::before { content: ''; position: absolute; left: -26px; top: 20px; width: 12px; height: 12px; border-radius: 50%; background: var(--primary); border: 3px solid white; box-shadow: 0 0 0 2px var(--primary); }
+         .timeline-time { font-size: 12px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+         .timeline-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+         .timeline-desc { font-size: 13px; color: #666; line-height: 1.5; }
+         .meal-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+         .meal-tag { background: white; padding: 6px 12px; border-radius: 20px; font-size: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 4px; }
+         .tips-box { background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: 12px; padding: 16px; margin-top: 16px; border-left: 4px solid #2196F3; }
+         .tips-box strong { color: #1976D2; display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
+         .tips-box p { font-size: 13px; color: #555; }
+         .transport-card { background: white; border-radius: 16px; padding: 20px; margin-bottom: 16px; box-shadow: var(--shadow); }
+         .transport-card h4 { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 16px; }
+         .price-tag { display: inline-block; background: var(--gradient-2); color: white; padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+         .hotel-card { background: white; border-radius: 20px; padding: 20px; margin-bottom: 16px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+         .hotel-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gradient-1); }
+         .hotel-card h3 { font-size: 18px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+         .hotel-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 13px; color: #666; margin-bottom: 12px; }
+         .hotel-desc { font-size: 14px; color: #555; margin-bottom: 16px; }
+         .traffic-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+         .traffic-table th, .traffic-table td { padding: 10px; text-align: left; border-bottom: 1px solid #eee; }
+         .traffic-table th { font-weight: 700; font-size: 12px; }
+         .budget-card { background: white; border-radius: 20px; padding: 20px; box-shadow: var(--shadow); }
+         .budget-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+         .budget-row:last-child { border-bottom: none; }
+         .budget-row.total { font-size: 18px; font-weight: 700; color: var(--primary); background: #fff5f5; margin: 0 -20px; padding: 16px 20px; border-radius: 0 0 20px 20px; }
+         .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 12px 20px 24px; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); display: flex; justify-content: space-around; z-index: 100; }
+         .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; color: #888; text-decoration: none; font-size: 11px; transition: color 0.3s; }
+         .nav-item.active, .nav-item:hover { color: var(--primary); }
+         .nav-item .icon { font-size: 24px; }
+         .scroll-top { position: fixed; bottom: 90px; right: 20px; width: 48px; height: 48px; background: var(--gradient-1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; box-shadow: var(--shadow); cursor: pointer; opacity: 0; transition: opacity 0.3s; z-index: 99; }
+         .scroll-top.visible { opacity: 1; }
+     </style>
+ </head>
+ <body>
+     <div class="header">
+         <div class="header-icon">🏞</div>
+         <h1>广西亲子游攻略</h1>
+         <div style="margin-top: 12px;">
+             <span class="header-tag">桂林+阳朔+龙脊</span>
+             <span class="header-tag">8月8日-15日</span>
+         </div>
+         <div style="margin-top: 8px; font-size: 13px; opacity: 0.9;">2位老人 + 2位妈妈 + 2个8岁男孩</div>
+     </div>
+     <div class="container">
+         <div class="quick-info">
+             <div class="info-card"><div class="icon">📅</div><div class="label">天数</div><div class="value">7天6晚</div></div>
+             <div class="info-card"><div class="icon">👥</div><div class="label">人数</div><div class="value">6人</div></div>
+             <div class="info-card"><div class="icon">🚗</div><div class="label">换酒店</div><div class="value">2次</div></div>
+             <div class="info-card"><div class="icon">💰</div><div class="label">预算</div><div class="value">¥13-17k</div></div>
+         </div>
+         <div class="alert-box">
+             <h3>⚠️ 必提前订（别忘记！）</h3>
+             <ul class="alert-list">
+                 <li><span class="num">1</span>8月8日航班（越早订越便宜）</li>
+                 <li><span class="num">2</span>漓江大瀑布饭店（暑假紧张，现在订）</li>
+                 <li><span class="num">3</span>蜜棠家庭套房（极度抢手，现在订）</li>
+                 <li><span class="num">4</span>携程/神州租车预订7座车</li>
+                 <li><span class="num">5</span>龙脊梯田门票（携程可订）</li>
+                 <li><span class="num">6</span>Day5前晚8点微信抢遇龙河竹筏票</li>
+             </ul>
+         </div>
+         <h2 class="section-title"><span class="emoji">✈️</span>交通信息</h2>
+         <div class="transport-card">
+             <h4>📍 抵达机场</h4>
+             <p><strong>桂林两江国际机场（KWL）</strong></p>
+             <p style="font-size: 13px; color: #666; margin-top: 8px;">距市区酒店28km/约40分钟车程</p>
+             <p style="font-size: 13px; color: #666;">返程从阳朔过去约90km/1.5h</p>
+             <p style="font-size: 13px; margin-top: 10px;">建议航班：<strong>8月8日下午，19:00前抵达</strong></p>
+         </div>
+         <h2 class="section-title"><span class="emoji">🚗</span>租车方案对比</h2>
+         <div class="transport-card">
+             <h4>🟢 方案A：全程租7座车（推荐）</h4>
+             <span class="price-tag">¥3650（每家¥1825）</span>
+             <p style="font-size: 13px; color: #666; margin-bottom: 10px;">8/8机场取车 → 8/15机场还车</p>
+             <p style="font-size: 13px;"><strong>✅ 优势：</strong>全天候有车，老人不用等，行李全程后备箱</p>
+             <p style="font-size: 13px; color: #888;">⚠️ GL8后备箱装不下6人行李，每人限1登机箱+1软包</p>
+         </div>
+         <div class="transport-card">
+             <h4>🔵 方案B：仅租8/11+8/12两天</h4>
+             <span class="price-tag" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">¥2090（每家¥1045）</span>
+             <p style="font-size: 13px; color: #666; margin-bottom: 10px;">租车2天272km · 其余天打车</p>
+             <p style="font-size: 13px;"><strong>✅ 优势：</strong>省钱¥1560（每家省¥780）</p>
+             <p style="font-size: 13px; color: #888;">⚠️ 阳朔散点景区需多次叫2辆车，老人路边等车</p>
+         </div>
+         <div class="tips-box">
+             <strong>💡 建议</strong>
+             <p>方案A差价每家780元，日均110元——换来老人全程有人接、行李不搬、随时停车。方案B在阳朔叫车会非常折腾。</p>
+         </div>
+         <h2 class="section-title"><span class="emoji">🏨</span>酒店安排</h2>
+         <div class="hotel-card">
+             <h3>🌟 漓江大瀑布饭店 <span style="font-size: 13px; font-weight: 400; color: #888;">8/8-8/12（4晚）</span></h3>
+             <div class="hotel-meta"><span>📍 两江四湖正中心</span><span>💰 ¥450-650/晚</span></div>
+             <p class="hotel-desc">桂林地标，晚上瀑布灯光秀。室内泳池+儿童池，有停车场。步行街3分钟。</p>
+             <table class="traffic-table">
+                 <tr><th style="color: #28a745;">✅ 优势</th><th style="color: #ffc107;">⚠️ 注意</th><th style="color: #dc3545;">❌ 劣势</th></tr>
+                 <tr><td>位置最佳<br>有停车场<br>泳池+儿童池</td><td>旺季需提前订<br>部分房型偏老</td><td>非专门亲子酒店<br>暑假涨价</td></tr>
+             </table>
+         </div>
+         <div class="hotel-card">
+             <h3>🌟 MeTown蜜棠度假酒店 <span style="font-size: 13px; font-weight: 400; color: #888;">8/12-8/15（3晚）</span></h3>
+             <div class="hotel-meta"><span>📍 十里画廊·遇龙河畔</span><span>💰 家庭套房¥700/晚</span></div>
+             <p class="hotel-desc">亲子口碑最好。家庭套房两室一厅。羊驼孔雀投喂、儿童乐园、无边泳池、免费旅拍、下午茶。</p>
+             <table class="traffic-table">
+                 <tr><th style="color: #28a745;">✅ 优势</th><th style="color: #ffc107;">⚠️ 注意</th><th style="color: #dc3545;">❌ 劣势</th></tr>
+                 <tr><td>亲子设施最全<br>家庭套房<br>免费旅拍+下午茶</td><td>路窄需接驳<br>距西街5km</td><td>暑假极度抢手<br>周边餐饮少</td></tr>
+             </table>
+         </div>
+         <h2 class="section-title"><span class="emoji">📅</span>每日行程 <small style="font-size: 13px; color: #888; font-weight: 400;">（点击展开）</small></h2>
+         <div class="day-card">
+             <div class="day-header" onclick="toggleDay(this)">
+                 <div class="day-title"><h3>Day 1 · 象鼻山+两江四湖</h3><p>8月9日 周日 | 🏨 住桂林</p></div>
+                 <div class="day-toggle">▼</div>
+             </div>
+             <div class="day-content">
+                 <div class="day-body">
+                     <p style="font-size: 13px; color: #666; margin-bottom: 16px;"><strong>⏱ 游玩：</strong>全天户外约2-3h，节奏轻松，老人适应性日</p>
+                     <div class="timeline">
+                         <div class="timeline-item">
+                             <div class="timeline-time">🌅 上午</div>
+                             <div class="timeline-title">睡饱+午餐</div>
+                             <div class="timeline-desc">前一天晚上到，今天不用赶。酒店早餐后附近午餐。</div>
+                         </div>
+                         <div class="timeline-item">
+                             <div class="timeline-time">☀ 中午 15:00-16:15</div>
+                             <div class="timeline-title">象鼻山</div>
+                             <div class="timeline-desc">3号门入2号门出，全程平地1h。老人走不动可在江边坐着等。</div>
+                         </div>
+                         <div class="timeline-item">
+                             <div class="timeline-time">🌇 下午 16:30起</div>
+                             <div class="timeline-title">两江四湖+晚餐</div>
+                             <div class="timeline-desc">步道散步→18:00步行街晚餐。饭后日月双塔夜景。</div>
+                         </div>
+                     </div>
+                     <div class="meal-tags">
+                         <span class="meal-tag">🍽 午餐：崇善米粉/阿甘酒家</span>
+                         <span class="meal-tag">🍽 晚餐：椿记烧鹅 ¥60-80</span>
+                     </div>
+                     <div class="tips-box">
+                         <strong>⚠️ 关键提示</strong>
+                         <p>第一天不赶。昨晚刚到让大家缓一缓。米粉店下午2点关门，别当晚饭吃。</p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="day-card">
+             <div class="day-header" onclick="toggleDay(this)">
+                 <div class="day-title"><h3>Day 2 · 靖江王府+七星景区</h3><p>8月10日 周一 | 🏨 住桂林</p></div>
+                 <div class="day-toggle">▼</div>
+             </div>
+             <div class="day-content">
+                 <div class="day-body">
+                     <p style="font-size: 13px; color: #666; margin-bottom: 16px;"><strong>⏱ 游玩：</strong>王府约2h（老人友好平地），七星景区约3h，全天约5h</p>
+                     <div class="timeline">
+                         <div class="timeline-item">
+                             <div class="timeline-time">🌅 上午 9:00-11:00</div>
+                             <div class="timeline-title">靖江王府</div>
+                             <div class="timeline-desc">明代王府，"桂林山水甲天下"出处。独秀峰306级台阶——老人山脚休息，妈妈带孩子爬山看全景。</div>
+                         </div>
+                         <div class="timeline-item">
+                             <div class="timeline-time">☀ 中午 12:00-16:00</div>
+                             <div class="timeline-title">七星景区</div>
+                             <div class="timeline-desc">动物园（熊猫馆+猴山）→七星岩溶洞→骆驼山。平地为主，老人可在骆驼山下茶馆休息。</div>
+                         </div>
+                         <div class="timeline-item">
+                             <div class="timeline-time">🌇 下午 17:00起</div>
+                             <div class="timeline-title">东西巷晚餐</div>
+                             <div class="timeline-desc">小吃摊糖油粑粑、桂花糕。老人慢慢逛。</div>
+                         </div>
+                     </div>
+                     <div class="meal-tags">
+                         <span class="meal-tag">🍽 午餐：同来米粉/小南国 ¥50-70</span>
+                         <span class="meal-tag">🍽 晚餐：阿甘酒家/勾味王</span>
+                     </div>
+                     <div class="tips-box">
+                         <strong>⚠️ 关键提示</strong>
+                         <p>景点对老人友好（平地为主）。独秀峰爬山可选不强求。</p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="day-card">
+             <div class="day-header" onclick="toggleDay(this)">
+                 <div class="day-title"><h3>Day 3 · 龙脊梯田+芦笛岩</h3><p>8月11日 周二 | 🏨 住桂林</p></div>
+                 <div class="day-toggle">▼</div>
+             </div>
+             <div class="day-content">
+                 <div class="day-body">
+                     <p style="font-size: 13px; color: #666; margin-bottom: 16px;"><strong>🚗 交通：</strong>桂林⇄龙脊160km（2h×2）+芦笛岩12km。全天开车172km</p>
+                     <p style="font-size: 13px; color: #666; margin-bottom: 16px;"><strong>⏱ 游玩：</strong>龙脊约3h，芦笛岩约1.5h。全天游玩4.5h，车程3.5h</p>
+                     <div class="timeline">
+                         <div class="timeline-item">
+                             <div class="timeline-time">🌅 上午 7:00-12:30</div>
+                             <div class="timeline-title">龙脊梯田</div>
+                             <div class="timeline-desc">7:00出发，9:00到金坑大寨。缆车上下，山顶看7月灌水镜面梯田。山脚午餐。</div>
+                         </div>
+                         <div class="timeline-item">
+                             <div class="timeline-time">☀ 中午 12:30-14:00</div>
+                             <div class="timeline-title">返回+午餐</div>
+                             <div class="timeline-desc">龙脊山脚竹筒饭+土鸡。开车回桂林2h，老人孩子车上休息。</div>
+                         </div>
+                         <div class="timeline-item">
+                             <div class="timeline-time">🌇 下午 16:00-17:30</div>
+                             <div class="timeline-title">芦笛岩</div>
+                             <div class="timeline-desc">国宾级溶洞恒温20°C全程平路。老人走溶洞完全没问题。18:00晚餐。</div>
+                         </div>
+                     </div>
+                     <div class="meal-tags">
+                         <span class="meal-tag">🍽 午餐：竹筒饭¥20-30+土鸡 ¥40-50</span>
+                         <span class="meal-tag">🍽 晚餐：小南国/米粉（清淡）</span>
+                     </div>
+                     <div class="tips-box">
+                         <strong>⚠️ 关键提示</strong>
+                         <p>全行程最累的一天。出发前备零食+动画片给孩子消磨时间。老人坐第二排。龙脊门票¥80，缆车¥100/人。</p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="day-card">
+             <div class="day-header" onclick="toggleDay(this)">
+                 <div class="day-title"><h3>Day 4 · 桂林→阳朔</h3><p>8月12日 周三 | 🔄 换酒店到阳朔</p></div>
+                 <div class="day-toggle">▼</div>
+             </div>
+             <div class="day-content">
+                 <div class="day-body">
+                     <p style="font-size: 13px; color: #666; margin-bottom: 16px;"><strong>🚗 交通：</strong>桂林酒店→相公山50km→兴坪30km→蜜棠35km。全天115km</p>
+                     <div class="timeline">
+                         <div class="timeline-item">
+                             <div class="timeline-time">🌅 上午 9:00-11:00</div>
+                             <div class="timeline-title">相公山</div>
+                             <div class="timeline-desc">退房后出发1h到相公山。15分钟台阶登顶看漓江全景——老人也能上。</div>
+                         </div>
+                         <div class="timeline-item">
+                             <div class="timeline-time">☀ 中午 11:30-14:30</div>
+                             <div class="timeline-title">兴坪古镇+20元背景</div>
+                             <div class="timeline-desc">逛兴坪老街→步行到江边观景台，让孩子举20块钱对比实景拍照。老街午餐。</div>
+                         </div>
+                         <div class="timeline-item">
+                             <div class="timeline-time">🌇 下午 15:30起</div>
+                             <div class="timeline-title">阳朔蜜棠入住</div>
+                             <div class="timeline-desc">开车40分钟到蜜棠。下午泳池/喂羊驼/下午茶。老人坐院子看山水。18:00开车去西街晚餐。</div>
+                         </div>
+                     </div>
+                     <div class="meal-tags">
+                         <span class="meal-tag">🍽 午餐：兴坪啤酒鱼 ¥50-70</span>
+                         <span class="meal-tag">🍽 晚餐：大师傅/谢三姐啤酒鱼 ¥80-100</span>
+                     </div>
+                     <div class="tips-box">
+                         <strong>⚠️ 关键提示</strong>
+                         <p>相公山是顺路加的一站——桂林到阳朔必经之路。桂林酒店退房时确认没有遗漏物品（之后不再回桂林）。</p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="day-card">
+             <div class="day-header" onclick="toggleDay(this)">
+                 <div class="day-title"><h3>Day 5 · 遇龙河+十里画廊</h3><p>8月13日 周四 | 🏨 住阳朔</p></div>
+                 <div class="day-toggle">▼</div>
+             </div>
+             <div class="day-content">
+                 <div class="day-body">
+                     <p style="font-size: 13px; color: #666; margin-bottom: 16px;"><strong>⏱ 游玩：</strong>竹筏1h，十里画廊2h，如意峰2h（缆车上下），全天5-6h</p>
+                     <div class="timeline">
+                         <div class="timeline-item">
+                             <div class="timeline-time">🌅 上午 8:30-10:00</div>
+                             <div class="timeline-title">遇龙河竹筏</div>
+                             <div class="timeline-desc">水厄底-工农桥段40分钟 ¥160/筏。老人可不坐——开车送到工农桥等。</div>
+                         </div>
+                         <div class="timeline-item">
+                             <div class="timeline-time">☀ 中午 10:00-13:30</div>
+                             <div class="timeline-title">十里画廊+农家饭</div>
+                             <div class="timeline-desc">开车慢行十里画廊。沿线停靠月亮山、大榕树、蝴蝶泉（1h）、图腾古道（40min）。</div>
+                         </div>
+                         <div class="timeline-item">
+                             <div class="timeline-time">🌇 下午 14:00-17:00</div>
+                             <div class="timeline-title">如意峰</div>
+                             <div class="timeline-desc">缆车上下，山顶步道+玻璃栈道。老人坐缆车看全景。晚上可选印象刘三姐（20:00-21:00）。</div>
+                         </div>
+                     </div>
+                     <div class="meal-tags">
+                         <span class="meal-tag">🍽 午餐：遇龙河农家菜 ¥40-60</span>
+                         <span class="meal-tag">🍽 晚餐：小南国/月圆山庄</span>
+                     </div>
+                     <div class="tips-box">
+                         <strong>⚠️ 关键提示</strong>
+                         <p>今晚8点微信抢竹筏票！蝴蝶泉和图腾古道都在十里画廊路边顺停。印象刘三姐可选（¥198起/人）。</p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="day-card">
+             <div class="day-header" onclick="toggleDay(this)">
+                 <div class="day-title"><h3>Day 6 · 世外桃源+银子岩</h3><p>8月14日 周五 | 🏨 住阳朔</p></div>
+                 <div class="day-toggle">▼</div>
+             </div>
+             <div class="day-content">
+                 <div class="day-body">
+                     <p style="font-size: 13px; color: #666; margin-bottom: 16px;"><strong>⏱ 游玩：</strong>世外桃源2.5h（坐船穿溶洞），银子岩1.5h，全天4-5h</p>
+                     <div class="timeline">
+                         <div class="timeline-item">
+                             <div class="timeline-time">🌅 上午 8:45-11:30</div>
+                             <div class="timeline-title">世外桃源</div>
+                             <div class="timeline-desc">坐船穿溶洞入湖，湖区+仿古村落+稻田。全程坐船+平地。2.5h。雨天备选：金水岩。</div>
+                         </div>
+                         <div class="timeline-item">
+                             <div class="timeline-time">☀ 中午 11:30-14:00</div>
+                             <div class="timeline-title">午餐+前往银子岩</div>
+                             <div class="timeline-desc">出口附近午餐，开车50分钟到银子岩。</div>
+                         </div>
+                         <div class="timeline-item">
+                             <div class="timeline-time">🌇 下午 14:00-18:00</div>
+                             <div class="timeline-title">银子岩+收官晚餐</div>
+                             <div class="timeline-desc">洞内1.5h（台阶比芦笛岩多，老人量力而行）。回蜜棠，收官晚餐。</div>
+                         </div>
+                     </div>
+                     <div class="meal-tags">
+                         <span class="meal-tag">🍽 午餐：世外桃源出口餐馆</span>
+                         <span class="meal-tag">🍽 晚餐：月圆山庄（收官）+芒果帮</span>
+                     </div>
+                     <div class="tips-box">
+                         <strong>⚠️ 关键提示</strong>
+                         <p>银子岩台阶比芦笛岩多，老人腿脚不便可在洞口咖啡馆等。雨天备选金水岩（泥巴浴+温泉+溶洞）。</p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="day-card">
+             <div class="day-header" onclick="toggleDay(this)">
+                 <div class="day-title"><h3>Day 7 · 返程回家</h3><p>8月15日 周六 | 🏠 回家</p></div>
+                 <div class="day-toggle">▼</div>
+             </div>
+             <div class="day-content">
+                 <div class="day-body">
+                     <p style="font-size: 13px; color: #666; margin-bottom: 16px;"><strong>🚗 交通：</strong>蜜棠→桂林两江机场 90km/1.5h</p>
+                     <div class="timeline">
+                         <div class="timeline-item">
+                             <div class="timeline-time">🌅 上午</div>
+                             <div class="timeline-title">最后的漓江晨光</div>
+                             <div class="timeline-desc">退房前在漓江边步道散步或蜜棠泳池最后泡一次。西街买桂花糕带路上。</div>
+                         </div>
+                         <div class="timeline-item">
+                             <div class="timeline-time">☀ 中午</div>
+                             <div class="timeline-title">出发去机场</div>
+                             <div class="timeline-desc">建议订14:00以后航班。方案A：加满油，机场还车预留20分钟。</div>
+                         </div>
+                         <div class="timeline-item">
+                             <div class="timeline-time">🌇 下午</div>
+                             <div class="timeline-title">到家</div>
+                             <div class="timeline-desc">预计下午到家，旅程收官！</div>
+                         </div>
+                     </div>
+                     <div class="meal-tags">
+                         <span class="meal-tag">🍽 午餐：路上吃或机场解决</span>
+                     </div>
+                     <div class="tips-box">
+                         <strong>⚠️ 关键提示</strong>
+                         <p>方案A满油还车。蜜棠退房检查孩子的小羊驼礼物有没有拿。建议订14:00后航班。</p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <h2 class="section-title"><span class="emoji">💰</span>预算参考（6人）</h2>
+         <div class="budget-card">
+             <div class="budget-row"><span>交通</span><div><span style="color: #28a745; font-weight: 600;">方案A ¥3650</span><span style="color: #888; margin-left: 10px;">方案B ¥2090</span></div></div>
+             <div class="budget-row"><span>住宿</span><span style="font-weight: 600;">¥5100-7000</span></div>
+             <div class="budget-row"><span>门票</span><span style="font-weight: 600;">约 ¥3900</span></div>
+             <div class="budget-row"><span>餐饮</span><span style="font-weight: 600;">约 ¥3000</span></div>
+             <div class="budget-row total"><span>合计</span><div style="text-align: right;"><div>方案A ¥13700-17500</div><div style="font-size: 14px; opacity: 0.8;">每家 ¥6850-8750</div></div></div>
+         </div>
+         <h2 class="section-title"><span class="emoji">👴</span>老人出行特别提示</h2>
+         <div class="transport-card">
+             <table class="traffic-table">
+                 <tr><th>注意</th><th>说明</th></tr>
+                 <tr><td>🪑 座位</td><td>GL8第二排航空座椅给老人</td></tr>
+                 <tr><td>💊 药品</td><td>常用药+晕车药+藿香正气水</td></tr>
+                 <tr><td>🚶 节奏</td><td>每天9点后出发，走不动就坐</td></tr>
+                 <tr><td>🍽 午餐</td><td>每天12:00前后必须安排</td></tr>
+                 <tr><td>🚻 厕所</td><td>龙脊车程2h，中途服务区停</td></tr>
+                 <tr><td>🏞 景点</td><td>溶洞最友好，竹筏可不坐，如意峰有缆车</td></tr>
+             </table>
+         </div>
+         <h2 class="section-title"><span class="emoji">🎒</span>行李清单（6人版）</h2>
+         <div class="transport-card">
+             <table class="traffic-table">
+                 <tr><th>类别</th><th>物品</th></tr>
+                 <tr><td>📇 证件</td><td>身份证+老人老年卡（景点优惠）</td></tr>
+                 <tr><td>👕 衣物</td><td>夏装×5套+薄外套（溶洞20°C）</td></tr>
+                 <tr><td>☀️ 防晒</td><td>防晒霜+遮阳帽（龙脊无遮阳）</td></tr>
+                 <tr><td>🦟 防蚊</td><td>驱蚊液/驱蚊贴</td></tr>
+                 <tr><td>💊 药品</td><td>常用药+晕车药+藿香正气水+创可贴+蒙脱石散</td></tr>
+                 <tr><td>🚗 车上</td><td>零食+水果+水+iPad+颈枕</td></tr>
+                 <tr><td>☔ 雨具</td><td>轻便雨衣×6</td></tr>
+             </table>
+         </div>
+         <div style="height: 80px;"></div>
+     </div>
+     <nav class="bottom-nav">
+         <a href="#" class="nav-item active" onclick="scrollToTop(); return false;"><span class="icon">📋</span><span>概览</span></a>
+         <a href="#" class="nav-item" onclick="scrollToSection('行程'); return false;"><span class="icon">📅</span><span>行程</span></a>
+         <a href="#" class="nav-item" onclick="scrollToSection('预算'); return false;"><span class="icon">💰</span><span>预算</span></a>
+         <a href="#" class="nav-item" onclick="scrollToSection('行李'); return false;"><span class="icon">🎒</span><span>行李</span></a>
+     </nav>
+     <div class="scroll-top" onclick="scrollToTop()">↑</div>
+     <script>
+         function toggleDay(header) {
+             const card = header.parentElement;
+             card.classList.toggle('active');
+         }
+         function scrollToTop() {
+             window.scrollTo({top: 0, behavior: 'smooth'});
+         }
+         function scrollToSection(keyword) {
+             const titles = document.querySelectorAll('.section-title');
+             for (let title of titles) {
+                 if (title.textContent.includes(keyword)) {
+                     title.scrollIntoView({behavior: 'smooth', block: 'start'});
+                     break;
+                 }
+             }
+         }
+         window.addEventListener('scroll', function() {
+             const scrollTop = document.querySelector('.scroll-top');
+             if (window.pageYOffset > 300) {
+                 scrollTop.classList.add('visible');
+             } else {
+                 scrollTop.classList.remove('visible');
+             }
+         });
+         document.addEventListener('DOMContentLoaded', function() {
+             const firstDay = document.querySelector('.day-card');
+             if (firstDay) firstDay.classList.add('active');
+         });
+     </script>
+ </body>
+ </html>
